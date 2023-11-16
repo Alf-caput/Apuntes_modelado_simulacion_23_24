@@ -1,0 +1,63 @@
+% % clear, clc
+% LineStyles = {'--', };
+% LineWidths = {};
+% DisplayNames = {'', };
+% Colors = {'b'};
+% Y = {};
+% 
+% pl_fields = {'', 'LineStyle', 'LineWidth', 'DisplayName'};
+% pl_compress_fields = {Y, LineStyles, LineWidths, DisplayNames}
+% 
+% pl = group_data(pl_fields, pl_compress_fields);
+% 
+% plot([1, 2, 3], LineWidth='default', DisplayName='hola_mundo')
+% legend()
+% SOLVER CONFIG
+% SolverTypes = {'VariableStep', };
+% SolverNames = {'ode45', };
+% StartTimes = {0, };
+% FixedSteps = {1, };
+% StopTimes = {20, };
+% 
+% solver_fields = {'SolverType', 'SolverName', 'StartTime', 'FixedStep', 'StopTime'};
+% solver_compress_fields = {SolverTypes, SolverNames, StartTimes, FixedSteps, StopTimes};
+% solver_compress_fields = cellfun(@string, solver_compress_fields, UniformOutput=false)
+
+clear, clc
+cfg = utils();
+
+% function grouped_data = group_data(field_names, compress_fields)
+% % Group named args
+% % INPUTS
+% % ------------------------------------------
+% % field_names = cell array
+% % compress_fields = cell array of cell arrays
+% %
+% % OUTPUTS
+% % ------------------------------------------
+% % grouped_data = cell array of cell arrays
+%     n = max(cellfun(@length, compress_fields));
+%     m = length(field_names);
+%     grouped_data = cell(1, n);
+%     for i = 1:n
+%         group_i = cell(1, m);
+%         for j = 1:m
+%             try
+%                 value = compress_fields{j}{i};
+%                 field = field_names(j);
+% 
+%                 if isempty(value)
+%                     continue
+%                 end
+%                 if isempty(field{1})
+%                     group_i{j} = value;
+%                 else
+%                     group_i{j} = [field, value];
+%                 end
+%             catch
+%                 continue
+%             end
+%         end
+%         grouped_data{i} = horzcat(group_i{:});
+%     end
+% end
