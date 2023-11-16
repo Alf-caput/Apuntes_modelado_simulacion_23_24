@@ -10,8 +10,8 @@ function [cfg, model_names, CI] = sim_utils()
     FixedSteps = {1, };
     StopTimes = {10, };
 
-    solver_fields = {'SolverType', 'SolverName', 'StartTime', 'FixedStep', 'StopTime'};
-    solver_compress_fields = {SolverTypes, SolverNames, StartTimes, FixedSteps, StopTimes};
+    solver_fields = {'SolverType', 'SolverName', 'StartTime', 'FixedStep', 'StopTime', };
+    solver_compress_fields = {SolverTypes, SolverNames, StartTimes, FixedSteps, StopTimes, };
     solver_compress_fields = cellfun(@string, solver_compress_fields, UniformOutput=false);
 
     % PLOT CONFIGS
@@ -20,10 +20,10 @@ function [cfg, model_names, CI] = sim_utils()
     Colors = {'', };
     LineStyles = {'-', };
     LineWidths = {'', };
-    DisplayNames = {'f(x)', 'x', 'y', 'r', 't'};
+    DisplayNames = {'', };
 
-    pl_fields = {'', '', 'LineStyle', 'LineWidth', 'DisplayName', 'Color'};
-    pl_compress_fields = {Xs, Ys, LineStyles, LineWidths, DisplayNames, Colors};
+    pl_fields = {'', '', 'LineStyle', 'LineWidth', 'DisplayName', 'Color', };
+    pl_compress_fields = {Xs, Ys, LineStyles, LineWidths, DisplayNames, Colors, };
 
     % SCATTER CONFIGS
     Xs = {};
@@ -34,34 +34,41 @@ function [cfg, model_names, CI] = sim_utils()
     MarkersEdgeColor = {'flat', };
     MarkersFaceAlpha = {0.5, };
     MarkersEdgeAlpha = {0.5, };
-    DisplayNames = {'f(x)', 'x', 'y', 'r', 't'};
+    DisplayNames = {'', };
 
-    sc_fields = {'', '', 'Marker', 'SizeData', 'MarkerFaceColor', 'MarkerEdgeColor', 'MarkerFaceAlpha', 'MarkerEdgeAlpha', 'DisplayName'};
-    sc_compress_fields = {Xs, Ys, Markers, SizesData, MarkersFaceColor, MarkersEdgeColor, MarkersEdgeAlpha, MarkersFaceAlpha, DisplayNames};
+    sc_fields = {'', '', 'Marker', 'SizeData', 'MarkerFaceColor', 'MarkerEdgeColor', 'MarkerFaceAlpha', 'MarkerEdgeAlpha', 'DisplayName', };
+    sc_compress_fields = {Xs, Ys, Markers, SizesData, MarkersFaceColor, MarkersEdgeColor, MarkersEdgeAlpha, MarkersFaceAlpha, DisplayNames, };
     sc_compress_fields = cellfun(@string, sc_compress_fields, UniformOutput=false);
 
     % XLABEL CONFIGS
-    txts = {'$x$', };
+    txts = {'', };
     Interpreters = {'latex', };
 
     xlabel_fields = {'', 'Interpreter', };
     xlabel_compress_fields = {txts, Interpreters, };
 
     % YLABEL CONFIGSS
-    txts = {'$y$', '$t$'};
+    txts = {'', };
     Interpreters = {'latex', };
+
 
     ylabel_fields = {'', 'Interpreter', };
     ylabel_compress_fields = {txts, Interpreters, };
 
     % TITLE CONFIGS
-    txts = {'$y = f(x)$', };
+    txts = {'', };
     Interpreters = {'latex', };
 
     titlelabel_fields = {'', 'Interpreter', };
     titlelabel_compress_fields = {txts, Interpreters, };
 
-
+    % LEGEND CONFIG
+    labels = {'show', };
+    Locations = {'northeast', };
+    
+    legend_fields = {'', 'Location', };
+    legend_compress_fields = {labels, Locations, };
+    
     % GROUP CONFIG PARAMETERS INTO SINGLE CONFIGS
     solver_configs = group_data(solver_fields, solver_compress_fields);
     pl_configs = group_data(pl_fields, pl_compress_fields);
@@ -69,10 +76,11 @@ function [cfg, model_names, CI] = sim_utils()
     xlabel_configs = group_data(xlabel_fields, xlabel_compress_fields);
     ylabel_configs = group_data(ylabel_fields, ylabel_compress_fields);
     titlelabel_configs = group_data(titlelabel_fields, titlelabel_compress_fields);
+    legend_configs = group_data(legend_fields, legend_compress_fields);
 
     % COMPRESS CONFIGS
-    compress_configs = {solver_configs, pl_configs, sc_configs, xlabel_configs, ylabel_configs, titlelabel_configs};
-    config_types = {'solver', 'plot', 'scatter', 'xlabel', 'ylabel', 'title'};
+    compress_configs = {solver_configs, pl_configs, sc_configs, xlabel_configs, ylabel_configs, titlelabel_configs, legend_configs, };
+    config_types = {'solver', 'plot', 'scatter', 'xlabel', 'ylabel', 'title', 'legend', };
 
     cfg = group_configs(config_types, compress_configs);
 
