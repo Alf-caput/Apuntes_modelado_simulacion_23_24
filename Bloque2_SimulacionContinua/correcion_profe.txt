@@ -1,0 +1,2 @@
+Comentarios:
+4.- 4p. Desde LiveScript no he sido capaz de que funcione la función sim_utils.m. Lo he tenido que hacer a mano, y eso no es correcto. Hay que poner las cosas fáciles al que tiene que revisar el problema. Por lo demás, bien. Y otra cosa: comenta mucho más los .m y funciones que haces: me toca a mí investigar qué hace cada cosa. 5.- 3p. La fricción viene modelada por una amortiguador, no por un muelle. Es decir, es proporcional a la. velocidad, no al espacio. Por tanto la nueva fuerza de la ecuación es errónea. Y te digo lo mismo que en el problema anterior.

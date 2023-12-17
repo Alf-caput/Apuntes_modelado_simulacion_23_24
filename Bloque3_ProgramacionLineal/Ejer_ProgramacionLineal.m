@@ -11,7 +11,7 @@ f = [-120, -100];
 A = [2, 2;
     5, 3;
     -1, 0;
-    0, -1]; % Nota: x_i >= 0 no es estándar => -x_i <= 0
+    0, -1]; % Nota: x_i >= 0 no es estándar se tiene que hacer -x_i <= 0
 b = [8, 15, 0, 0];
 
 [x, G] = linprog(f, A, b)
